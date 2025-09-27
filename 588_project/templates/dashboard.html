@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}Dashboard{% endblock %}
+{% block content %}
+<h1 class="text-3xl font-bold mb-2">Dashboard</h1>
+<p class="text-gray-400 mb-6">Welcome back! Here's what's happening with your system today.</p>
+
+<div class="grid grid-cols-3 gap-4">
+  <div class="p-6 bg-[#0d0d0f] rounded-lg">
+    <h3 class="text-sm text-gray-400">Total Members</h3>
+    <div class="text-3xl font-bold mt-2">{{ total_members }}</div>
+  </div>
+  <div class="p-6 bg-[#0d0d0f] rounded-lg">
+    <h3 class="text-sm text-gray-400">Buttons</h3>
+    <div class="text-3xl font-bold mt-2">{{ total_buttons }}</div>
+  </div>
+  <div class="p-6 bg-[#0d0d0f] rounded-lg">
+    <h3 class="text-sm text-gray-400">System</h3>
+    <div class="text-3xl font-bold mt-2">OK</div>
+  </div>
+</div>
+{% endblock %}

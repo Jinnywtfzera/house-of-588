@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title> HOUSE OF 588</title>
+<link rel="icon" href="https://i.postimg.cc/3wG0YBgp/6259b937-ba3a-4d61-8c35-62d4a5eeba30.jpg" type="image/png" type="image/png">
+<link href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+
+<style>
+body {
+  font-family: 'Prompt', sans-serif;
+  background: linear-gradient(180deg, #0d1b2a, #1b263b); /* พื้นหลังโทนเข้ม ไล่สี */
+  color: white;
+  height: 100vh;
+  margin:0;
+  overflow:hidden;
+  display:flex;
+  flex-direction:column;
+  position:relative;
+}
+#particles-js { position: fixed; top:0; left:0; width:100%; height:100%; z-index:-1; }
+
+.glass { background: rgba(255,255,255,0.08); backdrop-filter: blur(12px); border:1px solid rgba(255,255,255,0.2); border-radius:12px; }
+.glow { transition: all 0.3s ease; box-shadow:0 0 10px rgba(0,255,255,0.3); }
+.glow:hover { box-shadow:0 0 25px rgba(0,255,255,0.8); transform: translateY(-3px); }
+
+.center-content { display:flex; flex-direction:column; justify-content:center; align-items:center; flex-grow:1; gap:20px; text-align:center; }
+
+.main-button { padding:16px 50px; font-size:20px; border-radius:10px; border:1px solid rgba(255,255,255,0.2); cursor:pointer; text-transform:uppercase; font-weight:600; background: rgba(0,0,0,0.6); transition:all 0.3s ease; }
+.main-button:hover { background: rgba(0,255,255,0.1); color:#00ffff; transform: translateY(-3px); box-shadow:0 0 25px rgba(0,255,255,0.8); }
+
+.small-btn {
+  padding: 6px 14px;
+  margin: 4px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.5);
+  border: 2px solid rgba(255, 255, 255, 0.7);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+}
+.small-btn:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: #fff;
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.6);
+  transform: scale(1.05);
+}
+
+.top-left { position:absolute; top:10px; left:10px; }
+.top-right { position:absolute; top:10px; right:10px; display:flex; gap:8px; }
+
+.footer { text-align:center; padding:20px; margin-top:auto; background: rgba(0,0,0,0.5); border-top:1px solid rgba(255,255,255,0.2); color:#c0c0c0; font-size:14px; }
+</style>
+</head>
+<body>
+
+<div id="particles-js"></div>
+
+<!-- Top-left member count -->
+<div class="top-left">
+  <button class="small-btn glass glow" id="member-count-btn">สมาชิกทั้งหมด: 0</button>
+</div>
+
+<!-- Top-right partner buttons -->
+<div class="top-right">
+  <button class="small-btn glass glow" id="partner-btn">PARTNER IN 588</button>
+  <button class="small-btn glass glow" onclick="window.location.href='/รอเพิ่ม'">OVERFRIEND</button>
+  <button class="small-btn glass glow" onclick="window.location.href='/รอเพิ่ม'">WATDIAW</button>
+  <button class="small-btn glass glow" onclick="window.location.href='/รอเพิ่ม'">TIDPIK</button>
+  <button class="small-btn glass glow" onclick="window.location.href='https://ufsmp.com/myuf/'">WTF UFSMP</button>
+  <button class="small-btn glass glow" onclick="window.location.href='/รอเพิ่ม'">AWAKE</button>
+  <button class="small-btn glass glow" onclick="window.location.href='/รอเพิ่ม'">IMMORTAL</button>
+  <button class="small-btn glass glow" onclick="window.location.href='/รอเพิ่ม'">JUSTYOUKNOW</button>
+</div>
+
+<!-- Center content -->
+<div class="center-content">
+  <h1 class="text-4xl font-bold drop-shadow-lg">HOUSE OF 588</h1>
+  <button class="main-button glow" onclick="window.location.href='https://588.ufsmp.com/'">588</button>
+  <button class="main-button glow" onclick="window.location.href='sabudbob.html'">SABUDBOB</button>
+</div>
+
+<!-- Footer -->
+<div class="footer text-center py-3 text-gray-200"
+     style="background: rgba(0,0,0,0.5); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);">
+  Designed by 
+  <span>
+    <a href="https://www.facebook.com/profile.php?id=61575637497600&locale=th_TH" target="_blank" class="no-underline text-inherit hover:underline">
+      โหนสะบัด V.2 
+    </a>
+  </span> 
+  | Powered by 
+  <span>
+    <a href="https://www.facebook.com/wtf.semipro" target="_blank" class="no-underline text-inherit hover:underline">
+      BungJin Winterfell
+    </a>
+  </span> 
+  | © 2025
+</div>
+
+
+<script>
+AOS.init({duration:1000, once:true});
+VanillaTilt.init(document.querySelectorAll(".glow"), { max:15, speed:400, glare:true, "max-glare":0.3 });
+
+// Members Data
+const members = [
+  {"id":"1","name":"Theboss Winterfell"},
+  {"id":"2","name":"Arthur Winterfell"},
+  {"id":"3","name":"Vistra Winterfell"},
+  {"id":"4","name":"Owen Winterfell"},
+  {"id":"5","name":"Kings Winterfell"},
+  {"id":"6","name":"Zerx Winterfell"},
+  {"id":"7","name":"Awake Winterfell"},
+  {"id":"8","name":"Thomas Winterfell"},
+  {"id":"9","name":"Prxt Winterfell"},
+  {"id":"10","name":"Jestyz Winterfell"},
+  {"id":"11","name":"Joseph Winterfell"},
+  {"id":"12","name":"Ryo Winterfell"}
+];
+document.getElementById('member-count-btn').innerText = `สมาชิกทั้งหมด: 98`;
+
+// Particles.js (หิมะตก)
+particlesJS("particles-js", {
+  particles: {
+    number:{value:60,density:{enable:true,value_area:800}},
+    color:{value:"#ffffff"},
+    shape:{type:"circle"},
+    opacity:{value:0.6,random:true},
+    size:{value:3,random:true},
+    move:{enable:true,speed:1,direction:"bottom",random:false,out_mode:"out"}
+  },
+  interactivity:{detect_on:"canvas",events:{onhover:{enable:false},onclick:{enable:false}}},
+  retina_detect:true
+});
+</script>
+
+</body>
+</html>

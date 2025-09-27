@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>588Style</title>
+<link href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+body {
+  margin:0; font-family:'Prompt',sans-serif; background:#0f0f0f; color:#fff;
+  display:flex; flex-direction:column; align-items:center; padding:40px;
+}
+
+h1 { font-size:2.5rem; margin-bottom:30px; text-align:center; }
+
+.search-box { margin-bottom:30px; width:100%; max-width:900px; }
+.search-box input {
+  padding:12px 20px; border-radius:25px; border:none; outline:none;
+  width:100%; font-size:1rem; background:rgba(255,255,255,0.05); color:#fff;
+}
+
+#member-container {
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap:25px;
+  width:100%; max-width:1200px;
+}
+
+.member-card {
+  background: rgba(255,255,255,0.05); border-radius:20px;
+  padding:15px; display:flex; align-items:center; gap:15px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.member-card:hover { transform:translateY(-5px); box-shadow:0 0 25px rgba(0,140,255,0.6); }
+
+.member-photo {
+  width:80px; height:80px; border-radius:50%; object-fit:cover;
+  border:4px solid #fff; transition: transform 0.6s linear, box-shadow 0.3s;
+}
+.member-photo:hover { transform:rotate(360deg) scale(1.1); box-shadow:0 0 25px #fff; }
+
+.member-info { flex:1; display:flex; flex-direction:column; justify-content:center; }
+.member-name { font-size:1.2rem; font-weight:bold; color:#fff; margin-bottom:5px; }
+.member-link { font-size:0.95rem; color:#aaa; text-decoration:none; word-break:break-word; }
+.member-link:hover { color:#1e90ff; text-decoration:underline; }
+
+.fb-btn {
+  font-size:1.1em; color:#fff; text-decoration:none;
+  background: linear-gradient(135deg,#1877f2,#4f8ff7);
+  width:30px; height:30px; border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.fb-btn:hover { transform:scale(1.2); box-shadow:0 0 20px rgba(24,119,242,0.9); }
+
+/* ป๊อปอัปโปรโมท */
+#promo-popup {
+  position:fixed; bottom:20px; right:20px;
+  width:300px; background:#111; border:2px solid #1e90ff;
+  border-radius:20px; box-shadow:0 10px 25px rgba(0,0,0,0.6);
+  padding:15px; display:flex; flex-direction:column; align-items:center;
+  z-index:999; animation: popupShow 0.5s ease;
+}
+#promo-popup img { width:80px; height:80px; border-radius:50%; margin-bottom:10px; }
+#promo-popup h3 { color:#1e90ff; margin-bottom:10px; text-align:center; }
+#promo-popup a {
+  background:#1e90ff; color:#fff; padding:10px 20px; border-radius:50px;
+  text-decoration:none; font-weight:600; transition:all 0.3s; margin-bottom:5px;
+}
+#promo-popup a:hover { transform:scale(1.05); }
+#promo-popup button {
+  position:absolute; top:10px; right:10px;
+  background:transparent; border:none; color:#fff; font-size:1.2em; cursor:pointer;
+}
+@keyframes popupShow { from{transform:translateY(50px);opacity:0;} to{transform:translateY(0);opacity:1;} }
+</style>
+</head>
+<body>
+
+<h1>SABUDBOB</h1>
+
+<div class="search-box">
+  <input type="text" id="searchInput" placeholder="🔍 ค้นหาสมาชิก...">
+</div>
+
+<div id="member-container"></div>
+
+<!-- ป๊อปอัปโปรโมท โหนสะบัด -->
+<div id="promo-popup">
+  <button id="close-popup">&times;</button>
+  <img src="https://scontent.fbkk17-1.fna.fbcdn.net/v/t39.30808-6/497805163_122111773376854583_4210753176121066517_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=cqTypSelOhUQ7kNvwF4V7PR&_nc_oc=AdkOGb2gmPX9oJA1-j-Lypo7NTMdPFN0fk7_GzzZDZ4JZ2kCl7-lQYGRCou9xViiwmo&_nc_zt=23&_nc_ht=scontent.fbkk17-1.fna&_nc_gid=F94wdt5T2dwoWMCpXJxQCw&oh=00_AfZ84uyRvHapTjoQS7n1mrgDnoSo8ZJUsEFEi9Da2fdLpQ&oe=68DAA9F8" alt="โหนสะบัด">
+  <h3>โหนสะบัด V2</h3>
+  <a href="https://www.facebook.com/profile.php?id=61575637497600&locale=th_TH" target="_blank">กดเพื่อเข้าชม</a>
+</div>
+
+<script>
+const defaultProfilePic = "https://i.postimg.cc/HxWpjkw5/504465891-1932077977530575-5827066345363468189-n.png";
+
+// members will be injected by Flask as JSON into this template
+const members = {{ members|tojson }};
+
+function createMemberCard(member){
+  let displayLink = member.link.replace(/^https:\/\/www\.facebook\.com\//, "");
+  return `<div class="member-card" data-name="${member.name.toLowerCase()}">
+    <img class="member-photo" src="${defaultProfilePic}" alt="${member.name}">
+    <div class="member-info">
+      <span class="member-name">${member.name}</span>
+      <span class="member-link">${displayLink}</span>
+    </div>
+    <a href="${member.link}" target="_blank" class="fb-btn"><i class="fab fa-facebook-f"></i></a>
+  </div>`;
+}
+
+const container = document.getElementById("member-container");
+function renderMembers(filter=''){
+  container.innerHTML='';
+  const filtered = members.filter(m => m.name.toLowerCase().includes(filter.toLowerCase()));
+  filtered.forEach(member => { container.innerHTML += createMemberCard(member); });
+}
+
+document.getElementById('searchInput').addEventListener('input', e=>{ renderMembers(e.target.value); });
+renderMembers();
+
+// ปิด popup
+document.getElementById('close-popup').addEventListener('click', ()=>{ document.getElementById('promo-popup').style.display='none'; });
+</script>
+
+</body>
+</html>
